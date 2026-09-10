@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>metcn人体模特瑞木云-专业人体模型资源与3D建模参考平台</title>
+    <meta name="description" content="metcn人体模特瑞木云是一个专注人体造型参考与数字雕塑学习的专业平台，提供人体结构解析、动态姿势参考、建模技巧分享与艺术家作品展示，为CG创作者与美术学习者提供实用资源。">
+    <meta name="keywords" content="metcn人体模特,瑞木云,人体模特,人体结构,3D建模参考,数字雕塑,艺用人体解剖,动态姿势参考">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+            background: #f5f6f8;
+            color: #2d2d32;
+            line-height: 1.75;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Header ===== */
+        .site-header {
+            background: #1c1d21;
+            padding: 14px 0;
+            border-bottom: 3px solid #c8a96e;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .header-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .logo-area h1 span {
+            color: #c8a96e;
+        }
+        .logo-area p {
+            font-size: 0.75rem;
+            color: #9a9ca2;
+            margin-top: 2px;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+        }
+        .main-nav a {
+            color: #cfd0d4;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .main-nav a:hover {
+            color: #fff;
+            border-bottom-color: #c8a96e;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                width: 100%;
+                margin-top: 12px;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            .main-nav a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #333;
+            }
+            .nav-toggle {
+                display: inline-block;
+            }
+            .main-nav.open {
+                display: block;
+            }
+        }
+
+        /* ===== Hero 首屏 ===== */
+        .hero {
+            background: linear-gradient(135deg, #1b1c1f 0%, #2b2d33 100%);
+            color: #fff;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -80px;
+            top: -50px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(200,169,110,0.2) 0%, transparent 70%);
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero-text h2 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 18px;
+        }
+        .hero-text h2 em {
+            font-style: normal;
+            color: #c8a96e;
+        }
+        .hero-text p {
+            font-size: 1.05rem;
+            color: #c7c9cf;
+            margin-bottom: 28px;
+            max-width: 560px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: #c8a96e;
+            color: #1c1d21;
+        }
+        .btn-primary:hover {
+            background: #dbbd85;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.5);
+            color: #fff;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            border-color: #c8a96e;
+            color: #c8a96e;
+        }
+        .hero-visual {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(4px);
+        }
+        .hero-visual .model-card {
+            text-align: center;
+        }
+        .hero-visual .model-icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+        .hero-visual h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+        .hero-visual .tagline {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        .hero-visual .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+            border-top: 1px solid #444;
+            padding-top: 18px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-item strong {
+            display: block;
+            font-size: 1.4rem;
+            color: #c8a96e;
+        }
+        .stat-item span {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+        }
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== 栏目通用 ===== */
+        .section {
+            padding: 60px 0;
+        }
+        .section-alt {
+            background: #fff;
+        }
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+        .section-head h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1c1d21;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-head h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: #c8a96e;
+        }
+        .section-head .more-link {
+            color: #666;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+        }
+        .section-head .more-link:hover {
+            color: #c8a96e;
+            border-bottom-color: #c8a96e;
+        }
+
+        /* ===== 解剖结构分类 ===== */
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .anatomy-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid #e8e8ec;
+            transition: all 0.25s;
+        }
+        .anatomy-item:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transform: translateY(-4px);
+            border-color: #c8a96e;
+        }
+        .anatomy-item .icon {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .anatomy-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .anatomy-item p {
+            font-size: 0.85rem;
+            color: #777;
+            line-height: 1.6;
+        }
+        @media (max-width: 900px) {
+            .anatomy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .anatomy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== 姿势参考库 ===== */
+        .pose-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .pose-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eaeaea;
+            transition: all 0.25s;
+        }
+        .pose-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+        .pose-thumb {
+            height: 200px;
+            background: linear-gradient(140deg, #3a3c42 0%, #1c1d21 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c8a96e;
+            font-size: 3rem;
+            position: relative;
+        }
+        .pose-thumb .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(200,169,110,0.9);
+            color: #1c1d21;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .pose-info {
+            padding: 18px 20px;
+        }
+        .pose-info h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+        .pose-info .meta {
+            font-size: 0.8rem;
+            color: #999;
+            display: flex;
+            gap: 14px;
+        }
+        @media (max-width: 900px) {
+            .pose-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 520px) {
+            .pose-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== 艺术家作品 ===== */
+        .artist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .artist-card {
+            background: #f9f9fb;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e4e4ea;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .artist-card:hover {
+            border-color: #c8a96e;
+        }
+        .artist-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #2b2d33;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #c8a96e;
+        }
+        .artist-card h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .artist-card p {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .artist-card .works {
+            font-size: 0.75rem;
+            color: #c8a96e;
+            font-weight: 600;
+        }
+        @media (max-width: 900px) {
+            .artist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .artist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== 学习路径 ===== */
+        .learn-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .step-item {
+            position: relative;
+            padding: 30px 20px 20px;
+            background: #fff;
+            border-radius: 12px;
+            border-top: 4px solid #c8a96e;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .step-item .num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: rgba(200,169,110,0.25);
+            position: absolute;
+            top: 8px;
+            right: 16px;
+        }
+        .step-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .step-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        @media (max-width: 900px) {
+            .learn-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .learn-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== 工具推荐 ===== */
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .tool-row {
+            display: flex;
+            align-items: center;
+            background: #fafafc;
+            padding: 18px 20px;
+            border-radius: 10px;
+            border: 1px solid #ececef;
+            gap: 16px;
+        }
+        .tool-row .tool-icon {
+            font-size: 1.8rem;
+        }
+        .tool-row .tool-name {
+            font-weight: 600;
+            font-size: 1rem;
+            flex: 1;
+        }
+        .tool-row .tool-type {
+            font-size: 0.8rem;
+            color: #999;
+            background: #efeff3;
+            padding: 2px 12px;
+            border-radius: 12px;
+        }
+        @media (max-width: 700px) {
+            .tool-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== FAQ ===== */
+        .faq-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #e8e8ec;
+            padding: 20px 24px;
+        }
+        .faq-item h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1c1d21;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 26px;
+        }
+        .faq-item h3::before {
+            content: "Q";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background: #c8a96e;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #555;
+            padding-left: 26px;
+            margin-top: 4px;
+        }
+
+        /* ===== CTA 区块 ===== */
+        .cta-block {
+            background: #1c1d21;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .cta-block h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .cta-block p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 28px;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: #141519;
+            color: #9a9ca2;
+            padding: 40px 0 0;
+            font-size: 0.85rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #2a2b30;
+        }
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+        .footer-col ul li a:hover {
+            color: #c8a96e;
+        }
+        .footer-bottom {
+            padding: 18px 0;
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 800px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 500px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== 响应式辅助 ===== */
+        @media (max-width: 600px) {
+            .section {
+                padding: 40px 0;
+            }
+            .section-head h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-wrap">
+        <div class="logo-area">
+            <h1>metcn<span>人体模特</span></h1>
+            <p>瑞木云 · 数字造型参考平台</p>
+        </div>
+        <button class="nav-toggle" id="navToggle">☰ 菜单</button>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#anatomy">人体结构</a></li>
+                <li><a href="#poses">姿势参考</a></li>
+                <li><a href="#artists">艺术家</a></li>
+                <li><a href="#learn">学习路径</a></li>
+                <li><a href="#tools">工具推荐</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h2>人体造型参考<br>与<em>数字雕塑</em>创作社区</h2>
+                <p>metcn人体模特瑞木云 面向CG艺术家、插画师与美术学习者，提供高质量人体结构解析、动态姿势素材与雕塑工作流参考，帮助创作者在造型与解剖层面建立更扎实的认知。</p>
+                <div class="hero-btns">
+                    <a href="#poses" class="btn btn-primary">浏览姿势库</a>
+                    <a href="#learn" class="btn btn-outline">学习路径</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="model-card">
+                    <div class="model-icon">🧍</div>
+                    <h3>瑞木云 · 造型库</h3>
+                    <p class="tagline">持续收录艺用人体模型与动态姿势</p>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <strong>200+</strong>
+                            <span>姿势参考</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>40+</strong>
+                            <span>解剖专题</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>8</strong>
+                            <span>软件工作流</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解剖结构分类 -->
+    <section class="section" id="anatomy">
+        <div class="container">
+            <div class="section-head">
+                <h2>人体解剖结构解析</h2>
+                <a href="#" class="more-link">查看全部专题 →</a>
+            </div>
+            <div class="anatomy-grid">
+                <div class="anatomy-item">
+                    <span class="icon">🦴</span>
+                    <h3>骨骼系统</h3>
+                    <p>理解骨架比例、骨点位置与体块关系，建立人体基本框架认知。</p>
+                </div>
+                <div class="anatomy-item">
+                    <span class="icon">💪</span>
+                    <h3>肌肉分布</h3>
+                    <p>表层与深层肌群走向，重点掌握对形体影响显著的大肌群。</p>
+                </div>
+                <div class="anatomy-item">
+                    <span class="icon">🧠</span>
+                    <h3>面部结构</h3>
+                    <p>头骨特征、五官比例和面部肌肉联动，提升肖像塑造能力。</p>
+                </div>
+                <div class="anatomy-item">
+                    <span class="icon">🤸</span>
+                    <h3>动态平衡</h3>
+                    <p>重心转移、动态线与节奏感分析，让姿势表达更有生命力。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 姿势参考库 -->
+    <section class="section section-alt" id="poses">
+        <div class="container">
+            <div class="section-head">
+                <h2>热门动态姿势参考</h2>
+                <a href="#" class="more-link">进入姿势库 →</a>
+            </div>
+            <div class="pose-gallery">
+                <div class="pose-card">
+                    <div class="pose-thumb">🚶<span class="badge">基础</span></div>
+                    <div class="pose-info">
+                        <h3>行走连续动作</h3>
+                        <div class="meta"><span>12 张序列</span><span>2.4k 浏览</span></div>
+                    </div>
+                </div>
+                <div class="pose-card">
+                    <div class="pose-thumb">🏃<span class="badge">进阶</span></div>
+                    <div class="pose-info">
+                        <h3>奔跑与爆发力姿势</h3>
+                        <div class="meta"><span>8 张序列</span><span>1.8k 浏览</span></div>
+                    </div>
+                </div>
+                <div class="pose-card">
+                    <div class="pose-thumb">🧘<span class="badge">静态</span></div>
+                    <div class="pose-info">
+                        <h3>坐姿与蜷缩形态</h3>
+                        <div class="meta"><span>15 张多角度</span><span>3.1k 浏览</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 艺术家作品展示 -->
+    <section class="section" id="artists">
+        <div class="container">
+            <div class="section-head">
+                <h2>人气创作者与作品</h2>
+                <a href="#" class="more-link">更多创作者 →</a>
+            </div>
+            <div class="artist-grid">
+                <div class="artist-card">
+                    <div class="artist-avatar">🎨</div>
+                    <h3>林默</h3>
+                    <p>数字雕塑 / 角色设计</p>
+                    <div class="works">代表作：战甲少女 · 兽人系列</div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-avatar">✏️</div>
+                    <h3>苏澈</h3>
+                    <p>艺用解剖 / 速写讲师</p>
+                    <div class="works">代表作：人体动态速写100例</div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-avatar">🗿</div>
+                    <h3>陈一石</h3>
+                    <p>传统雕塑 / 泥塑</p>
+                    <div class="works">代表作：躯干研究系列</div>
+                </div>
+                <div class="artist-card">
+                    <div class="artist-avatar">🖌️</div>
+                    <h3>白泽</h3>
+                    <p>概念设计 / 影视美术</p>
+                    <div class="works">代表作：废土猎人设定集</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习路径 -->
+    <section class="section section-alt" id="learn">
+        <div class="container">
+            <div class="section-head">
+                <h2>从入门到进阶的学习路径</h2>
+                <a href="#" class="more-link">查看完整课程 →</a>
+            </div>
+            <div class="learn-steps">
+                <div class="step-item">
+                    <span class="num">01</span>
+                    <h3>基础观察</h3>
+                    <p>通过写生与临摹，培养对整体比例和动态的敏感度，建立观察习惯。</p>
+                </div>
+                <div class="step-item">
+                    <span class="num">02</span>
+                    <h3>解剖精读</h3>
+                    <p>系统学习骨骼与肌肉，理解表层形态之下的结构逻辑，避免概念化。</p>
+                </div>
+                <div class="step-item">
+                    <span class="num">03</span>
+                    <h3>数字雕刻</h3>
+                    <p>在ZBrush、Blender中实践造型，将解剖知识转化为三维空间中的体感。</p>
+                </div>
+                <div class="step-item">
+                    <span class="num">04</span>
+                    <h3>风格化探索</h3>
+                    <p>在扎实基础上建立个人语言，尝试夸张、变形与角色化表达。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常用工具推荐 -->
+    <section class="section" id="tools">
+        <div class="container">
+            <div class="section-head">
+                <h2>常用建模与参考工具</h2>
+                <a href="#" class="more-link">工具评测合集 →</a>
+            </div>
+            <div class="tool-list">
+                <div class="tool-row">
+                    <div class="tool-icon">🟠</div>
+                    <div class="tool-name">ZBrush</div>
+                    <div class="tool-type">数字雕刻</div>
+                </div>
+                <div class="tool-row">
+                    <div class="tool-icon">🔵</div>
+                    <div class="tool-name">Blender</div>
+                    <div class="tool-type">建模/雕刻</div>
+                </div>
+                <div class="tool-row">
+                    <div class="tool-icon">🟣</div>
+                    <div class="tool-name">DAZ Studio</div>
+                    <div class="tool-type">人体渲染</div>
+                </div>
+                <div class="tool-row">
+                    <div class="tool-icon">⚪</div>
+                    <div class="tool-name">Sketchfab</div>
+                    <div class="tool-type">3D浏览</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq">
+        <div class="container">
+            <div class="section-head">
+                <h2>常见问题</h2>
+            </div>
+            <div class="faq-wrap">
+                <div class="faq-item">
+                    <h3>metcn人体模特瑞木云 是什么平台？</h3>
+                    <p>这是一个面向数字艺术与美术学习者的人体造型参考平台，汇集了艺用解剖知识、动态姿势素材以及多位创作者的实践分享，适合雕塑、建模、绘画等领域的从业者使用。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>我需要专业背景才能使用这些素材吗？</h3>
+                    <p>不需要。内容从基础观察开始逐步深入，既有面向初学者的速写与比例讲解，也有供进阶用户参考的解剖专题和雕刻工作流演示。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>姿势素材可以用于商业项目吗？</h3>
+                    <p>平台内素材分为免费共享与创作者授权两类。免费素材可用于学习与个人创作；如需商业使用，请留意每个素材页面的授权说明，或联系上传者获取授权。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何参与投稿或分享自己的作品？</h3>
+                    <p>注册账号后可在个人中心提交作品，通过审核后即会展示在对应栏目中。建议上传时附上简要的创作说明与使用工具，方便其他用户学习交流。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-block">
+        <div class="container">
+            <h2>开始你的造型探索之旅</h2>
+            <p>无论是为了夯实基础还是寻找灵感，瑞木云都能为你提供有价值的人体参考与创作支持。</p>
+            <a href="#" class="btn btn-primary">立即注册体验</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>metcn人体模特瑞木云</h4>
+                <p>专注人体造型参考与数字雕塑学习的垂直社区。内容涵盖解剖结构、姿势素材、创作方法论与软件实践，为CG创作者提供持续成长的土壤。</p>
+            </div>
+            <div class="footer-col">
+                <h4>内容栏目</h4>
+                <ul>
+                    <li><a href="#anatomy">人体解剖</a></li>
+                    <li><a href="#poses">姿势参考</a></li>
+                    <li><a href="#artists">创作者</a></li>
+                    <li><a href="#learn">学习路径</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>资源</h4>
+                <ul>
+                    <li><a href="#">素材下载</a></li>
+                    <li><a href="#">软件教程</a></li>
+                    <li><a href="#">创作灵感</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>社区</h4>
+                <ul>
+                    <li><a href="#">加入讨论</a></li>
+                    <li><a href="#">作品投稿</a></li>
+                    <li><a href="#">活动比赛</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 metcn人体模特瑞木云 · 本平台内容仅供学习交流，请尊重创作者版权。
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 移动端导航切换
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.getElementById('navToggle');
+        var nav = document.getElementById('mainNav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', function() {
+                nav.classList.toggle('open');
+            });
+        }
+    });
+</script>
+
+</body>
+                  </html>
